@@ -1,0 +1,6 @@
+<section class='blog' ng-controller="blogCtrl">
+  <nav window-leave-check class='category-box' id="category-box">
+    <custom-radio ng-repeat="category in categorys track by $index" class="category" change-radio="indexChange" ng-checked="$index == categoryIndex" ng-bind="category.title" value="{{$index}}"></custom-radio>
+  </nav>
+    <article lazy-view="blogRoute" class="main-view"></article>
+</section>

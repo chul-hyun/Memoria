@@ -1,0 +1,38 @@
+@import 'bootstrap';
+
+.blog{
+    .window-leave{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    .category-box{
+        
+        display:block;
+        .make-row();
+        .category{
+            text-align:center;
+            cursor: pointer;
+            padding-top:3px;
+            padding-bottom:3px;
+            border-bottom: 2px solid @gray-lighter;
+            .make-xs-column(2);
+            &:first-of-type{
+                .make-xs-column-offset(2);
+            }
+            &:not(.customRadioOn){
+                color: @gray-light;
+                &:hover{
+                    color: @gray;
+                    border-bottom-color: lighten(@brand-success,30%);
+                }
+            }
+        }
+        .customRadioOn{
+            color: @brand-success;
+            border-bottom-color: @brand-success;
+            font-weight:bolder;
+        }
+    }
+}

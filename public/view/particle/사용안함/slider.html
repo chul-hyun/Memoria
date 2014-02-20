@@ -1,0 +1,10 @@
+<form class="slider" name="slider" ng-controller='slideCtrl'>
+    <a class="sliderImgLink" ng-href='{{slides[slideButton].link}}'>
+        <div class="wraper" ng-repeat="slide in slides">
+            <img ng-src="{{slide.img}}" ng-class="{view: $index == slideButton}">
+        </div>
+    </a>
+    <div class="slider_buttons">
+        <custom-radio ng-model="slideButton" value="{{$index}}" ng-repeat="slide in slides" class="slider_button" checked></custom-radio>
+    </div>
+</form>

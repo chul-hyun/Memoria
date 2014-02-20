@@ -1,0 +1,56 @@
+@import 'values';
+@import 'gradient';
+@import 'box';
+
+.menus {
+    width: 100%;
+    height: 100%;
+    max-width: @content-max-width;
+    margin: 0px auto;
+
+    .wraper {
+        display: inline-table;
+        width: 20%;
+        height: 100%;
+
+        .menu {
+            display: table-cell;
+            width: 100%;
+            height: 100%;
+            opacity: 0.95;
+            /*텍스트 desgin*/
+            font-family: 'Malgun Gothic';
+            color: #fff;
+            text-transform: capitalize;
+            font-variant: small-caps;
+            font-weight: bold;
+            letter-spacing: 10px;
+            text-decoration: none;
+            font-size: 20px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        /*hover시 색 변경효과*/
+        transition: background 1s;
+        -webkit-transition: background 1s; /* Safari */
+        &:nth-child(even):not(.chose) { /*메뉴색을 짝수마다 다르게*/
+            background-color: rgba(0,0,0,0);
+        }
+
+        &:nth-child(odd):not(.chose) { /*메뉴색을 짝수마다 다르게*/
+            background-color: rgb(120, 120, 120);
+        }
+
+        &:hover:not(.chose) {
+            background-color: #fcb34f;
+        }
+
+    }
+
+    .chose {
+        background-color: #fcb34f;
+    }
+}
+
+
+
