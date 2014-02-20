@@ -1,4 +1,5 @@
 define(['Loop', 'Misc', 'Check', 'Path'], function (Loop, Misc, Check, Path) {
+    console.log('LazyAngularCore')
   /**
   * list객체 형식
   * controllers, directives, filters: 

@@ -2,6 +2,7 @@
 
 define(['angular', 'LazyAngularCore', 'Loop', 'outerHTML'],
   function (angular, LazyAngularCore, Loop) {
+      console.log('LazyAngular');
 
     //현제 페이지의 HTML을 조사하여 필요한 데이터(controller, directive)를 가져온후 부트스트랩 하는 부트스트랩 함수
     function bootstrap(element, modules) {

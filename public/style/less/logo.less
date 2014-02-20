@@ -1,4 +1,4 @@
-﻿@import 'bootstrap';
+﻿@import 'global';
 
 @height: 70px;
 @mainTitleWidth:130px;
@@ -88,44 +88,6 @@
                 visibility: hidden;
                 height: 0;
                 width: 0;
-            }
-        }
-    }
-}
-
-@halfRate: 2/3;
-
-.half{
-    .down-head();
-    .logo-title {
-        //font
-        line-height: @height * @halfRate;
-        //degin
-        height: @height * @halfRate;
-        width: @mainTitleWidth * @halfRate + @subTitleWidth * @halfRate + @iconPadding * @halfRate;
-        .main-title {
-            //degin
-            width: @mainTitleWidth * @halfRate;
-        }
-
-        .sub-title {
-            //position
-            position: relative;
-            top: (@height * @halfRate * 2 / 5);
-            //degin
-            height: @subTitleHeight * @halfRate;
-            line-height: @subTitleHeight * @halfRate;
-            width: @subTitleWidth * @halfRate;
-
-            custom-option {
-                //degin
-                height: @subTitleHeight * @halfRate;
-                line-height: @subTitleHeight * @halfRate;
-            }
-            select-view {
-                &:after {
-                    padding-left: @iconPadding * @halfRate;
-                }
             }
         }
     }

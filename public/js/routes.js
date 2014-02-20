@@ -1,9 +1,9 @@
 'use strict';
 
 define([
-		'app', //생성한 앵귤러 모듈에 루트를 등록하기 위해 임포트
-    'model/defaultModel',
-    'module/Loop',
+		'js/app', //생성한 앵귤러 모듈에 루트를 등록하기 위해 임포트
+    'defaultModel',
+    'Loop',
     'angular-route'
 ],
 

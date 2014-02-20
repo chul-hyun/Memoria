@@ -1,5 +1,5 @@
 'use strict';
-
+console.log('config')
 //requireJS 기본 설정 부분
 requirejs.config({
   baseUrl:'js/module',
@@ -52,7 +52,7 @@ requirejs.config({
 //requireJS를 활용하여 모듈 로드
 requirejs(['LazyAngular', 'require', 'js/routes', 'bootstrap', 'css!style/fonts'],
   function (LazyAngular, require) {
-    console.log(require);
+    console.log('require');
     LazyAngular.pushPathInfo({
       controllers: [],
       directives: [],
