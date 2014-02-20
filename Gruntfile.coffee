@@ -17,6 +17,7 @@ module.exports = (grunt) ->
 
   grunt.initConfig
     pkg : grunt.file.readJSON 'package.json'
+
     connect :
       server:
         options     :
@@ -67,7 +68,5 @@ module.exports = (grunt) ->
     open:
       server:
         path: "http://localhost:<%= connect.server.options.port %>"
-    
-    clean: [publicSrc.style]
 
-  grunt.registerTask 'server', [ 'clean', 'connect:server', 'less', 'open', 'watch' ]
+  grunt.registerTask 'server', [ 'connect:server', 'less', 'open', 'watch' ]
