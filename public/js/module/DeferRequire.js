@@ -1,4 +1,4 @@
-define(['module/Defer'], function (Defer) {
+define(['Defer'], function (Defer) {
     return function (paths) {
         console.log(paths);
         console.log('등록');

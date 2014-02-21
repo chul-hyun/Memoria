@@ -37,25 +37,6 @@ define(['Check', 'Loop'], function (Check, Loop) {
         });
     };
 
-    function applyRoot(root, paths) {
-        Check.map(['String', root], ['Array', 'Object', 'String', paths]);
-
-        if (root === '') {
-            return paths;
-        }
-
-        if (Check.isString(paths)) {
-            return [root, paths].join('/');
-        }
-
-        var resultPaths = [];
-        Loop.each(paths, function (val) {
-            resultPaths.push([root, val].join('/'));
-        })
-
-        return resultPaths;
-    }
-
     function toObject(arr) {
         Check.map(["Array", arr]);
         var convertObject = {}
@@ -65,33 +46,9 @@ define(['Check', 'Loop'], function (Check, Loop) {
         return convertObject;
     }
 
-    var SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g;
-    var MOZ_HACK_REGEXP = /^moz([A-Z])/;
-
-    /**
-    * Converts snake_case to camelCase.
-    * Also there is special case for Moz prefix starting with upper case letter.
-    * @param name Name to normalize
-    */
-    function camelCase(name) {
-        return name.
-    replace(SPECIAL_CHARS_REGEXP, function (_, separator, letter, offset) {
-        return offset ? letter.toUpperCase() : letter;
-    }).
-    replace(MOZ_HACK_REGEXP, 'Moz$1');
-    }
-    function noCamelCase(name) {
-        return name.match(/^(?:[^A-Z]+)|[A-Z](?:[^A-Z]*)+/g)
-                    .join("-")
-                    .toLowerCase();
-    }
-
     return {
         namespace: namespace,
         defaultObjectInit: defaultObjectInit,
-        applyRoot: applyRoot,
-        toObject: toObject,
-        camelCase: camelCase,
-        noCamelCase: noCamelCase
+        toObject: toObject
     };
 });

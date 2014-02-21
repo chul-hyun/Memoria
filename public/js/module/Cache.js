@@ -1,4 +1,4 @@
-define(['module/Check', 'module/Loop', 'module/Misc', 'module/Err'], function (Check, Loop, Misc, Err) {
+define(['Check', 'Loop', 'Misc', 'Err'], function (Check, Loop, Misc, Err) {
     //Cache모듈에 모든 캐쉬값은 이 cacheBox 객체에 담긴다.
     var cacheBox = {};
 

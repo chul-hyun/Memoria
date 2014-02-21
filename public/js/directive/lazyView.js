@@ -5,8 +5,8 @@
   * @author: memoria
   * @see: LazyRegister
   */
-define(['LazyAngular', 'LazyRegister', 'module/DeferRequire', 'module/Loop', 'module/Check']
-  , function (LazyAngular, LazyRegister, DeferRequire, Loop, Check) {
+define(['LazyRegister', 'LazyAngular', 'DeferRequire', 'Loop', 'Check']
+  , function (LazyRegister, LazyAngular, DeferRequire, Loop, Check) {
     LazyRegister.directive('lazyView', ['$compile', '$route', function ($compile, $route) {
       return {
         restrict: 'A',

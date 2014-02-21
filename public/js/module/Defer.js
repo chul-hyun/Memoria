@@ -1,4 +1,4 @@
-define(['module/Classer', 'module/Check', 'module/Err'], function (Classer, Check, Err) {
+define(['Classer', 'Check', 'Err'], function (Classer, Check, Err) {
     //done, fail, then, getState
     var STATUS = {
         pending: 'pending',
