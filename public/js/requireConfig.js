@@ -57,9 +57,8 @@ requirejs.config({
 //requireJS를 활용하여 모듈 로드
 requirejs(['LazyAngular', 'require', 'js/routes', 'bootstrap', 'css!style/fonts'],
   function (LazyAngular, require) {
-      console.log('require');
       LazyAngular.pushPathInfo({
-          controllers: ['CommonCtrl', 'routeCtrl'],
+          controllers: ['CommonCtrl', 'routeCtrl', 'logoCtrl'],
           directives: ['lazyInclude', 'lazyView'],
           filters: []
       });

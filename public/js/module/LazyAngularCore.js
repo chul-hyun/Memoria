@@ -1,5 +1,4 @@
 define(['Loop', 'Misc', 'Check', 'Path'], function (Loop, Misc, Check, Path) {
-    console.log('LazyAngularCore')
     /**
     * list객체 형식
     * controllers, directives, filters: 
@@ -39,7 +38,6 @@ define(['Loop', 'Misc', 'Check', 'Path'], function (Loop, Misc, Check, Path) {
             directives: [],
             filters: []
         });
-        console.log(pathInfo)
         Loop.muti(pathInfo.controllers, pathInfo.directives, pathInfo.filters, function (val, key) {
             var name = val.name || Path.getFileName(val)
               , path = val.path || val
@@ -53,21 +51,22 @@ define(['Loop', 'Misc', 'Check', 'Path'], function (Loop, Misc, Check, Path) {
 
     function setRootInfo(baseInfo) {
         Misc.defaultObjectInit(baseInfo, root);
-        console.log(baseInfo);
         root = baseInfo;
     }
 
     /**
     * list에서 값을 삭제하는 함수
     *
-    * @params path: 삭제될 path값.
+    * @params paths: 삭제될 path값들 (배열).
     */
-    function removePathInfo(path) {
-        Loop.each(pathInfo.controllers, pathInfo.directives, pathInfo.filters, function (val, index) {
-            if (val.path == path) {
-                this.splice(index, 1);
-                return false;
-            }
+    function removePathInfo(paths) {
+        Loop.each(paths, function (path) {
+            Loop.muti(list.controllers, list.directives, list.filters, function (val, index) {
+                if (val.path == path) {
+                    this.splice(index, 1);
+                    return false;
+                }
+            })
         })
     }
 

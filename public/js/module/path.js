@@ -41,7 +41,6 @@
     replace(MOZ_HACK_REGEXP, 'Moz$1');
     }
     function noCamelCase(name) {
-        console.log(name)
         return name.match(/^(?:[^A-Z]+)|[A-Z](?:[^A-Z]*)+/g)
                     .join("-")
                     .toLowerCase();
@@ -52,7 +51,6 @@
     */
     function getFileName(pathString) {
         Check.map(['String', pathString]);
-        console.log(pathString.split('/').pop());
         return pathString.split('/').pop();
     }
 

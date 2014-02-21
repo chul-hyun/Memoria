@@ -2,7 +2,6 @@
 
 define(['LazyAngularCore', 'Loop', 'outerHTML', 'angular'],
   function (LazyAngularCore, Loop) {
-      console.log('LazyAngular');
 
       //현제 페이지의 HTML을 조사하여 필요한 데이터(controller, directive)를 가져온후 부트스트랩 하는 부트스트랩 함수
       function bootstrap(element, modules) {
@@ -20,29 +19,29 @@ define(['LazyAngularCore', 'Loop', 'outerHTML', 'angular'],
             , needPaths = []
             , dom;
           //html파일 요청
-          console.log(path)
           require(['text!' + path], function (data) {
+              console.log(data);
               //가져온 html파일의 컴파일에 필요한 파일들의 경로들 get 및 요청
-              html = data[0];
+              html = data;
               needPaths = LazyAngularCore.getNeedPaths(html);
+              console.log(needPaths)
               require(needPaths, function (data) {
 
+                  console.log(html);
                   //컴파일 및 DOM 적용.
                   ele.injector().invoke(function ($compile) {
                       var scope = ele.scope();
                       dom = $compile(html)(scope);
+                      console.log(dom);
                       ele.html(dom);
+                      //apply
+                      scope.$apply();
                   });
 
                   //불러온 path값을 list에서 삭제한다.
-                  Loop.each(needPaths, function (val) {
-                      LazyAngularCore.removePathInfo(val);
-                  })
+                  LazyAngularCore.removePathInfo(needPaths);
 
-                  //apply
-                  scope.$apply();
-
-                  callback || callback();
+                  callback && callback();
               })
           })
       }

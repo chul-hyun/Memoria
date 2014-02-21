@@ -96,11 +96,7 @@ define(['Check'], function (Check) {
         var args = Array.prototype.slice.call(arguments, 0);
         var iterator = args.pop();
 
-        console.log(args);
-        console.log(iterator);
-
         each(args, function (val) {
-            console.log(val)
             return each(val, iterator);
         })
     }
