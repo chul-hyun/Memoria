@@ -1,5 +1,0 @@
-<form class='menus' ng-controller='menuCtrl'>
-    <div class="wraper" ng-repeat='menu in menus' ng-class="{chose: menuButton== $index }">
-        <custom-radio ng-model="menuButton" value ='{{$index}}' ng-bind='menu.name' class='menu'></custom-radio>
-    </div>
-</form>

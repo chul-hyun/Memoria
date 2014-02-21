@@ -52,7 +52,7 @@ module.exports = (grunt) ->
     less:
       development:
         options:
-          paths: ["#{publicSrc.less}/import"]
+          paths: ["#{publicSrc.style}/import"]
           compress: false
           cleancss: true
           ieCompat: false
