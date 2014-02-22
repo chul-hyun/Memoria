@@ -15,95 +15,100 @@
   * @author: memoria
   * @see: LazyRegister, customSelectView, customOption
   */
-define(['LazyRegister', 'module/Loop', 'jquery', 'module/Check'], function (LazyRegister, Loop, $, Check) {
-  LazyRegister.directive('customSelect', function () {
-    return {
-      restrict: 'E',
-      scope: {
-        changeSelect: "="
-      },
-      controller: ['$scope', '$element', function ($scope, $element) {
-        //values init
-        var viewText
-          , $selected
-          , firstOption
-          , options = []
-          , selectViews = []
-          , selectingState = false;
+define(['LazyRegister', 'Loop', 'Check', 'jquery', 'jquery.mousewheel'], function (LazyRegister, Loop, Check) {
+    LazyRegister.directive('customSelect', function () {
+        return {
+            restrict: 'E',
+            scope: {
+                changeSelect: "="
+            },
+            controller: ['$scope', '$element', function ($scope, $element) {
+                //values init
+                var viewText
+                  , $selected
+                  , firstOption
+                  , options = []
+                  , selectViews = []
+                  , OptionWrappers = []
+                  , selectingState = false;
 
-        //option 초기화함수
-        this.initOption = function (option) {
-          options.push(option);
-          //selected 속성을 가진 option일시, 첫번째 option일시 $selectView 설정
-          if (option.attr('selected')) {
-            $selected = option;
-          }
-          if (firstOption === undefined) {
-            firstOption = option;
-          }
+                //option 초기화함수
+                this.initOption = function (option) {
+                    options.push(option);
+                    //selected 속성을 가진 option일시, 첫번째 option일시 $selectView 설정
+                    if (option.attr('selected')) {
+                        $selected = option;
+                    }
+                    if (firstOption === undefined) {
+                        firstOption = option;
+                    }
+                }
+
+                this.getFirstOption = function () {
+                    return firstOption;
+                }
+
+                //selectView 초기화함수
+                this.initSelectViews = function (selectView) {
+                    selectViews.push(selectView);
+                    selectView.text(viewText);
+                }
+                
+                //CustomOptionWrapper 초기화 함수
+                this.initCustomOptionWrapper = function (customOptionWrapper) {
+                    OptionWrappers.push(customOptionWrapper);
+                }
+
+                //selected get/set
+                this.selected = function (selected) {
+                    if (selected && selected != $selected) {
+                        $selected = selected;
+                        if (Check.isFunction($scope.changeSelect)) {
+                            $scope.changeSelect(selected.attr('value'));
+                        }
+                    }
+                    return $selected;
+                }
+
+                //select태그, customSelectView태그 클릭시 optionSelecting클래스 토글.
+                $element.on('click', function (e) {
+                    setSelecting(!selectingState);
+
+                    e.stopPropagation();
+                });
+
+                // 다른곳, custom-option등을 클릭시 selectingState를 false로.
+                $('html').on('click mousewheel', function (e) {
+                    setSelecting(false);
+
+                    e.stopPropagation();
+                });
+
+                function setSelecting(selecting) {
+                    selectingState = selecting;
+
+                    if (selecting) {
+                        $element
+                          .attr('selecting', true)
+                          .prop('selecting', true);
+
+                        Loop.muti(options, selectViews, OptionWrappers, function (option) {
+                            option
+                              .attr('selecting', true)
+                              .prop('selecting', true);
+                        });
+                    } else {
+                        $element
+                          .removeAttr('selecting')
+                          .prop('selecting', false);
+                        Loop.muti(options, selectViews, OptionWrappers, function (option) {
+                            option
+                              .removeAttr('selecting')
+                              .prop('selecting', false);
+                        });
+                    }
+                }
+            }]
         }
-
-        this.getFirstOption = function () {
-          return firstOption;
-        }
-
-        //selectView 초기화함수
-        this.initSelectViews = function (selectView) {
-          selectViews.push(selectView);
-          selectView.text(viewText);
-        }
-
-        //selected get/set
-        this.selected = function (selected) {
-          if (selected && selected != $selected) {
-            $selected = selected;
-            console.log($scope.changeSelect);
-            if (Check.isFunction($scope.changeSelect)) {
-              $scope.changeSelect(selected.attr('value'));
-            }
-          }
-          return $selected;
-        }
-
-        //select태그, customSelectView태그 클릭시 optionSelecting클래스 토글.
-        $element.on('click', function (e) {
-          setSelecting(!selectingState);
-
-          e.stopPropagation();
-        });
-
-        // 다른곳, custom-option등을 클릭시 selectingState를 false로.
-        $('html').on('click', function (e) {
-          setSelecting(false);
-          
-          e.stopPropagation();
-        });
-
-        function setSelecting(selecting) {
-          selectingState = selecting;
-
-          if (selecting) {
-            $element
-              .attr('selecting', true)
-              .prop('selecting', true);
-
-            Loop.muti(options, selectViews, function (option) {
-              option
-                .attr('selecting', true)
-                .prop('selecting', true);
-            });
-          } else {
-            $element
-              .removeAttr('selecting')
-              .prop('selecting', false);
-            Loop.muti(options, selectViews, function (option) {
-              option
-                .removeAttr('selecting')
-                .prop('selecting', false);
-            });
-          }
-        }
-      }]
-    }
-  })
+    })
 });

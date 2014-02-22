@@ -1,0 +1,1 @@
+custom-select{display:inline-block}custom-select custom-select-view{display:inline}custom-select custom-option-wrapper{position:absolute}custom-select custom-option-wrapper:before{content:'\0';display:inline-block}custom-select custom-option-wrapper custom-option{display:none}custom-select custom-option-wrapper custom-option[selecting]{display:block}

@@ -2,7 +2,7 @@
   var posts = [];
   for (var i = 0 ; i < 13 ; i++) {
     posts[i] = {
-      cover: 'images/music' + (i+1)+'.jpg'
+      cover: 'resource/image/music' + (i+1)+'.jpg'
     };
   }
   

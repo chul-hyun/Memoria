@@ -46,9 +46,6 @@ requirejs.config({
         },
         'bootstrap': {
             deps: ['jquery', 'css!style/bootstrap']
-        },
-        'outerHTML': {
-            deps: ['jquery']
         }
     }
 });
@@ -58,8 +55,13 @@ requirejs.config({
 requirejs(['LazyAngular', 'require', 'js/routes', 'bootstrap', 'css!style/fonts'],
   function (LazyAngular, require) {
       LazyAngular.pushPathInfo({
-          controllers: ['CommonCtrl', 'routeCtrl', 'logoCtrl'],
-          directives: ['lazyInclude', 'lazyView'],
+          controllers: [
+              'CommonCtrl', 'logoCtrl',
+              'blogCtrl', 'musicRoomCtrl'],
+          directives: [
+              'lazyInclude', 'lazyView',
+              'customSelect', 'customSelectView', 'customOption', 'customOptionWrapper',
+              'customRadio'],
           filters: []
       });
       LazyAngular.setRootInfo({

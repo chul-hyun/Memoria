@@ -8,7 +8,7 @@ define(['LazyRegister', 'model/routeModel', 'jquery'], function (LazyRegister, r
           $scope.pageList = pageList;
           $scope.logoTitle = routeModel.title;
           //css 설정
-          require(['css!style/logo', 'css!style/default-custom-select']);
+          require(['css!style/default-custom-select', 'css!style/logo']);
 
           $scope.selectIndex = $location.path().split("/")[1];
 

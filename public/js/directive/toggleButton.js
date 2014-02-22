@@ -1,6 +1,6 @@
 'use strict';
 
-define(['LazyRegister', 'module/Check'], function (LazyRegister, Check) {
+define(['LazyRegister', 'Check'], function (LazyRegister, Check) {
     LazyRegister.directive('toggleButton', [function () {
         var skins = {
             menu: '<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>'

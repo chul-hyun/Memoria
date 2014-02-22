@@ -25,7 +25,6 @@ define(['LazyRegister', 'LazyAngular', 'DeferRequire', 'Loop']
                       //lazyIncludeStart 발생.
                       scope.$emit('lazyIncludeStart', next)
 
-                      console.log(next.path)
                       //load
                       LazyAngular.loader(element, next.path, function () {
                           //lazyIncludeSuccess 발생.

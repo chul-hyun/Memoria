@@ -22,8 +22,8 @@ define(['LazyRegister', 'LazyAngular', 'DeferRequire', 'Loop', 'Check']
               reload(next);
             });
 
-          //link때 reload함수 실행. (현제 route값을 적용)
-          reload($route.current);
+            //link때 reload함수 실행. (현제 route값을 적용)
+          $route.current && reload($route.current);
 
           function reload(next) {
             if (!Check.isFunction(scope.pathInit)) {
