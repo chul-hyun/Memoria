@@ -1,68 +1,66 @@
 ﻿@import 'global';
 @import 'glyphicons';
 
-
-
 .logo {
-    .logo-title {
-        .main-title {
+    @fontSize: 35px;
+    //main-title font
+    .main-title {
+        font-size: @fontSize;
+    }
+
+    .sub-title {
+        @padding: 5px;
+        @radius: 3px;
+        custom-select-view, custom-option, custom-option:before {
+            font-size: @fontSize * 1/2;
+            text-align: left;
+            padding: @padding;
+            cursor: pointer;
+            &:not(custom-option){
+                color: white;
+                background-color: @brand-success;
+            }
+            &:not(custom-select-view){
+                display:block;
+            }
+        }
+        custom-option{
+            color: @brand-success;
+            .border-right-radius(@radius);
+            border-left:3px solid @brand-success;
+            background-color: white;
+            
+            &:hover{
+                color:white;
+                background-color: @brand-success;
+            }
+            &[selected] {
+                display: none;
+            }
         }
 
-        .sub-title {
-            @radius: 3px;
-            @padding: 3px;
-
-            * {
-                color: white;
+        custom-select-view {
+            &:after {
+                font-family: 'Glyphicons Halflings';
+                content: "\e114";
+                font-size: 8px;
+                padding: 0 5px;
             }
+            //&:hover {
+            //    color: @brand-info;
+            //}
+            .border-top-radius(@radius);
+            .border-right-radius(@radius);
+        }
+        //sub-title animate
+        custom-option-wrapper {
+            z-index:@categoryIndex;
+            .transition(height .5s);
+            height: 0px;
+            overflow-y: hidden;
 
-            custom-select-view {
-                background-color: @brand-success;
-                padding: @padding;
-                border-radius: @radius;
-
-                &:after {
-                    font-family: 'Glyphicons Halflings';
-                    content: "\e114";
-                    font-size: 8px;
-                    padding: 0 5px;
-                }
-                //&:hover {
-                //    color: @brand-info;
-                //}
-            }
-
-            custom-option-wrapper {
-                .transition(height .5s);
-                height: 0px;
-                overflow-y: hidden;
-
-                &[selecting] {
-                    height: 150px;
-                }
-
-                custom-option {
-                    text-align: left;
-                    display: block;
-                    background-color: @brand-success;
-                    padding: @padding;
-
-                    &[selected] {
-                        display: none;
-                    }
-
-                    &:first-of-type {
-                        .border-top-radius(@radius);
-                    }
-
-                    &:last-of-type {
-                        .border-bottom-radius(@radius);
-                    }
-                }
-
-                &:before {
-                    padding: @padding;
-                }
+            &[selecting] {
+                height: 150px;
             }
         }
     }

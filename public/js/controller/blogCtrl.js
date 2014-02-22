@@ -12,7 +12,7 @@ define(['LazyRegister', 'model/blogModel', 'Check', 'Path'],
                 , category = $scope.categorys[$scope.categoryIndex] //현제 카테고리
 
               //css 설정
-              $scope.$emit('addCSS', ['blog']);
+              require(['css!style/blog']);
 
               $scope.blogRoute = function (info) {
                   initCategory(info.params.categoryIndex);

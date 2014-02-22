@@ -61,7 +61,7 @@ requirejs(['LazyAngular', 'require', 'js/routes', 'bootstrap', 'css!style/fonts'
           directives: [
               'lazyInclude', 'lazyView',
               'customSelect', 'customSelectView', 'customOption', 'customOptionWrapper',
-              'customRadio'],
+              'customRadio', 'windowLeaveCheck'],
           filters: []
       });
       LazyAngular.setRootInfo({

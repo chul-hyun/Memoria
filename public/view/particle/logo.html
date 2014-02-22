@@ -1,7 +1,7 @@
 ﻿<section class="logo navbar-static-top" ng-controller="logoCtrl">
     <h1 class="logo-title text-center container-fluid">
         <span class="main-title">{{logoTitle}}</span>
-        <custom-select class="sub-title small" change-select="changePage">
+        <custom-select class="sub-title" change-select="changePage">
             <custom-option-wrapper>
                 <custom-option value="{{$index}}" ng-repeat="page in pageList" ng-selected="{{selectIndex == $index}}" ng-bind="page.title"></custom-option>
             </custom-option-wrapper>

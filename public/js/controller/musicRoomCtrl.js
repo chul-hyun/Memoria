@@ -2,8 +2,7 @@
     //컨트롤러 선언
     LazyRegister.controller('musicRoomCtrl', ['$scope', '$element',
       function ($scope, $element) {
-          //css
-          require(['css!/style/music-room']);
+          
           var $postListBox = $element.find('#post-list-box')
             , postListBoxMoveHeight = $postListBox.height() || 130
             , $postListController = $postListBox.find('#post-list-controller')
@@ -13,6 +12,13 @@
             , $postListDownButton = $postListBox.find('#down-button')
             , $postListExpandButton = $postListBox.find('#expand-button');
 
+          var orginTop;
+
+          //css
+          require(['css!/style/music-room'], function () {
+              orginTop = $postListBox.scrollTop();
+              initButton();
+          });
 
           $postListController.on('click', 'button', function (e) {
               if (this === $postListUpButton[0]) {
@@ -25,7 +31,8 @@
               initButton();
           })
 
-          initButton();
+          //처음엔 postList이동 버튼들을 모두 disabled.
+          $postListUpButton.add($postListDownButton).add($postListExpandButton).attr('disabled', true);
 
           function postListUp() {
               $postListBox.scrollTop($postListBox.scrollTop() - postListBoxMoveHeight);
@@ -59,7 +66,7 @@
 
               //$postListExpandButton 체크
               ($postListUpButton.attr('disabled') && $postListDownButton.attr('disabled')) ?
-                $postListExpandButton.removeAttr('disabled') : $postListExpandButton.attr('disabled', true);
+                $postListExpandButton.attr('disabled', true) : $postListExpandButton.removeAttr('disabled');
 
               //본래 위치로 되돌린다.
               $postListBox.scrollTop(orginTop);
