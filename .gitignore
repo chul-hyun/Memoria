@@ -1,2 +1,2 @@
-*.css # use lessFile
+*.css
 node_modules/
