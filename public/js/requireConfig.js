@@ -57,7 +57,7 @@ requirejs(['LazyAngular', 'require', 'js/routes', 'bootstrap', 'css!style/fonts'
       LazyAngular.pushPathInfo({
           controllers: [
               'CommonCtrl', 'logoCtrl',
-              'blogCtrl', 'musicRoomCtrl'],
+              'blogCtrl', 'musicRoomCtrl','discPlayerCtrl', 'imgSlideCtrl'],
           directives: [
               'lazyInclude', 'lazyView',
               'customSelect', 'customSelectView', 'customOption', 'customOptionWrapper',
