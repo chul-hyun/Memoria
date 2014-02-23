@@ -4,6 +4,7 @@ define(['LazyRegister', 'model/routeModel', 'jquery'], function (LazyRegister, r
       function ($scope, $element, $location) {
           //values init
           var pageList = routeModel.pageList;
+          var $categorySelect = $element.find('#category-select');
 
           $scope.pageList = pageList;
           $scope.logoTitle = routeModel.title;
@@ -13,14 +14,22 @@ define(['LazyRegister', 'model/routeModel', 'jquery'], function (LazyRegister, r
           $scope.selectIndex = $location.path().split("/")[1];
 
           $scope.changePage = function (value) {
-              if ($scope.selectIndex === value) {
-                  return;
+              //$scope.selectIndex = value;
+              if ($location.path() !== value) {
+                  $location.path(value);
+                  if (!!!$scope.$$phase && !!!$scope.$root.$$phase) {
+                      $scope.$apply()
+                  }
               }
+              
+          }
+          $scope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
+              
+              var value = $location.path().split("/")[1];
               $scope.selectIndex = value;
-              $location.path(value);
               if (!!!$scope.$$phase && !!!$scope.$root.$$phase) {
                   $scope.$apply()
               }
-          }
+          });
       }]);
 });

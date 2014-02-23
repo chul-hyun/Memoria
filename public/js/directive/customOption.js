@@ -29,6 +29,15 @@ define(['LazyRegister'], function (LazyRegister) {
             customSelectCtrl.selected(element);
           }
         })
+        attrs.$observe('ngSelected', function (val) {
+            if (on === val) {
+                return;
+            }
+            
+            if (val==='true') {
+                customSelectCtrl.selected(element);
+            }
+        })
 
         //selected클래스가 있을시 현제 element를 selected값으로 설정.
         scope.$watch(function () {
