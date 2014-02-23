@@ -4,20 +4,20 @@
       function ($scope, $element) {
           
           var $postListBox = $element.find('#post-list-box')
-            , postListBoxMoveHeight = $postListBox.height() || 130
+            , postListBoxMoveHeight
             , $postListController = $postListBox.find('#post-list-controller')
-            , $postListScrollIndex = 1;
+            , $postListScrollIndex = 1
+            , slidingSpeed = 300;
 
           var $postListUpButton = $postListBox.find('#up-button')
             , $postListDownButton = $postListBox.find('#down-button')
             , $postListExpandButton = $postListBox.find('#expand-button');
 
-          var orginTop;
-
           //css
           require(['css!/style/music-room'], function () {
-              orginTop = $postListBox.scrollTop();
+              postListBoxMoveHeight = $postListBox.height();
               initButton();
+              $(window).resize(initButton);
           });
 
           $postListController.on('click', 'button', function (e) {
@@ -28,17 +28,16 @@
               } else if (this === $postListExpandButton[0]) {
                   postListToggle();
               }
-              initButton();
           })
 
           //처음엔 postList이동 버튼들을 모두 disabled.
-          $postListUpButton.add($postListDownButton).add($postListExpandButton).attr('disabled', true);
+          postListBoxMoveHeight || $postListUpButton.add($postListDownButton).add($postListExpandButton).attr('disabled', true);
 
           function postListUp() {
-              $postListBox.scrollTop($postListBox.scrollTop() - postListBoxMoveHeight);
+              $postListBox.stop(true, true).animate({ scrollTop: $postListBox.scrollTop() - postListBoxMoveHeight }, slidingSpeed, initButton);
           }
           function postListDown() {
-              $postListBox.scrollTop($postListBox.scrollTop() + postListBoxMoveHeight);
+              $postListBox.stop(true, true).animate({ scrollTop: $postListBox.scrollTop() + postListBoxMoveHeight }, slidingSpeed, initButton);
           }
           function postListToggle() {
               alert('postListExpand');
@@ -60,7 +59,7 @@
                 $postListUpButton.attr('disabled', true) : $postListUpButton.removeAttr('disabled');
 
               //$postListDownButton 체크
-              $postListBox.scrollTop(orginTop - postListBoxMoveHeight);
+              $postListBox.scrollTop(orginTop + postListBoxMoveHeight);
               (orginTop === $postListBox.scrollTop()) ?
                 $postListDownButton.attr('disabled', true) : $postListDownButton.removeAttr('disabled');
 

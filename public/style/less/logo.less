@@ -2,7 +2,16 @@
 @import 'glyphicons';
 
 .logo {
+    @logoPadding: 10px;
     @fontSize: 35px;
+    background-color: white;
+    margin: 0;
+    padding: @logoPadding;
+
+    .logo-title {
+        text-align: center;
+        margin:0px;
+    }
     //main-title font
     .main-title {
         font-size: @fontSize;
@@ -11,29 +20,34 @@
     .sub-title {
         @padding: 5px;
         @radius: 3px;
+
         custom-select-view, custom-option, custom-option:before {
             font-size: @fontSize * 1/2;
             text-align: left;
             padding: @padding;
             cursor: pointer;
-            &:not(custom-option){
+
+            &:not(custom-option) {
                 color: white;
                 background-color: @brand-success;
             }
-            &:not(custom-select-view){
-                display:block;
+
+            &:not(custom-select-view) {
+                display: block;
             }
         }
-        custom-option{
+
+        custom-option {
             color: @brand-success;
             .border-right-radius(@radius);
-            border-left:3px solid @brand-success;
+            border-left: 3px solid @brand-success;
             background-color: white;
-            
-            &:hover{
-                color:white;
+
+            &:hover {
+                color: white;
                 background-color: @brand-success;
             }
+
             &[selected] {
                 display: none;
             }
@@ -54,7 +68,7 @@
         }
         //sub-title animate
         custom-option-wrapper {
-            z-index:@categoryIndex;
+            z-index: @categoryIndex;
             .transition(height .5s);
             height: 0px;
             overflow-y: hidden;
