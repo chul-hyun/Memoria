@@ -49,6 +49,7 @@
                 margin: @listBoxPadding auto;
                 display: block;
                 z-index: @blogMainViewZIndex;
+                border: 3px solid white;
             }
         }
 
@@ -86,14 +87,15 @@
     }
 
     .playarea {
-        @screenSize: 600px;
-        @discSize: @screenSize * 5/6;
+        @screenSize: 550px;
+        @discSize: @screenSize * 9/10;
         @discHoleSize: @screenSize * 1/6;
         @discBorderSize: 10px;
         @discLineSize: @discHoleSize + @discBorderSize * 3;
         @discMoveSize: @screenSize * 1/2;
         @discColor: @gray-dark;
         @playerSize: @discMoveSize + @discSize;
+        @playerPadding: 20px;
 
         .player, .comment {
             display: block;
@@ -102,6 +104,8 @@
         }
 
         .player {
+            padding: @playerPadding 0;
+
             .disc, screen {
                 position: absolute;
             }
@@ -114,13 +118,13 @@
                 margin-bottom: (@screenSize - @discSize) / 2;
                 margin-left: @discMoveSize;
                 margin-right: 0;
-                z-index:-1;
+                z-index: -1;
 
                 &:after {
-                    content:' ';
+                    content: ' ';
                     .square(@discHoleSize);
-                    display:@discColor;
-                    position:absolute;
+                    display: @discColor;
+                    position: absolute;
                     background-color: @backgroundColor;
                     border-radius: @discHoleSize;
                     top: @discSize/2 - @discHoleSize/2;
@@ -128,43 +132,46 @@
                 }
 
                 &:before {
-                    content:' ';
+                    content: ' ';
                     .square(@discLineSize);
-                    display:block;
-                    position:absolute;
+                    display: block;
+                    position: absolute;
                     background-color: transparent;
                     border-radius: @discLineSize;
                     top: @discSize/2 - @discLineSize/2;
                     left: @discSize/2 - @discLineSize/2;
-                    border:3px solid @backgroundColor;
+                    border: 3px solid @backgroundColor;
                 }
             }
 
             .screen {
                 .square(@screenSize);
+                border: 3px solid white;
+                background-color: white;
             }
         }
 
         .comment {
             @paddingSize: 20px;
             @baseColor: @brand-success;
-            position:absolute;
-            left:0;
-            right:0;
+            position: absolute;
+            left: 0;
+            right: 0;
             background-color: saturate(@baseColor,40%);
-            padding:@paddingSize;
+            padding: @paddingSize;
             border: 5px solid @baseColor;
             border-radius: 5px;
-            line-height:1.5;
+            line-height: 1.5;
             .box-shadow(0px 0px 5px #fff);
             margin-bottom: 50px;
-            .time{
-                position:absolute;
-                top:0;
-                left:0;
-                right:0;
-                text-align:right;
-                padding:@paddingSize;
+
+            .time {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                text-align: right;
+                padding: @paddingSize;
             }
         }
     }
