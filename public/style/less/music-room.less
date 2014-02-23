@@ -7,25 +7,15 @@
 .music-room {
     .fixedBackground(@backgroundColor);
 
-    .img-list-box {
-        .make-row();
+    .img-slide-box {
 
         .img-box {
             .make-row();
-            //xs
-            .make-xs-column-push(6);
-            .make-xs-column(24);
-            //sm
-            .make-sm-column-push(4);
-            .make-sm-column(28);
-            //md
-            .make-md-column-push(2);
-            .make-md-column(32);
-            //lg
-            .make-lg-column-push(3);
-            .make-lg-column(30);
+            
+            margin-right:50px;
+            margin-left:50px;
 
-            .post-list {
+            .img-wrap {
                 .make-xs-column(18);
                 .make-sm-column(9);
                 .make-md-column(6);
@@ -35,7 +25,7 @@
     }
 
     .img-slide(100px, 10px);
-    .img-list-box {
+    .img-slide-box {
         background-color: aquamarine;
 
         .img-wrap {
@@ -47,7 +37,7 @@
             }
         }
 
-        .img-list-controller {
+        .img-slide-controller {
             .btn-wrap {
                 .btn {
                     background-color: transparent;

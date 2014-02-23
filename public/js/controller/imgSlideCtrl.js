@@ -3,20 +3,20 @@
     LazyRegister.controller('imgSlideCtrl', ['$scope', '$element',
       function ($scope, $element) {
           var postListBoxMoveHeight
-            , $postListController = $element.find('#img-slide-controller')
+            , $postListController = $element.find('.img-slide-controller')
             , $postListScrollIndex = 1
             , slidingSpeed = 300;
-
-          var $postListUpButton = $postListController.find('#up-button')
-            , $postListDownButton = $postListController.find('#down-button')
-            , $postListExpandButton = $postListController.find('#expand-button');
+          console.log($scope.testt);
+          var $postListUpButton = $postListController.find('.up button')
+            , $postListDownButton = $postListController.find('.down button')
+            , $postListExpandButton = $postListController.find('.expand button');
 
           //css
-          //require(['css!/style/img-slide'], function () {
+          require(['css!/style/music-room'], function () {
               postListBoxMoveHeight = $element.height();
               initButton();
               $(window).resize(initButton);
-          //});
+          });
 
           $postListController.on('click', 'button', function (e) {
               if (this === $postListUpButton[0]) {

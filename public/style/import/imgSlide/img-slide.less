@@ -1,7 +1,7 @@
 ﻿@import 'global';
 
 .img-slide(@imgSize, @padding) {
-    .img-list-box {
+    .img-slide-box {
         padding: 0;
         height: @imgSize + @padding * 2;
         overflow-y: hidden;
@@ -9,12 +9,12 @@
         .img-wrap {
             .img {
                 .square(@imgSize);
-                margin: @padding auto;
-                display: block;
+                display:block;
+              margin: @padding auto;
             }
         }
-
-        .img-list-controller {
+        
+        .img-slide-controller {
             position: absolute;
             margin: @padding;
             height: @imgSize;

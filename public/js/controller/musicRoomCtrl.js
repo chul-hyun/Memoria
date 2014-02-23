@@ -5,5 +5,6 @@
           //css
           require(['css!/style/music-room']);
           $scope.posts = musicRoomModel.getPosts(0, 12);
+          $scope.testt = '1';
       }]);
 });
