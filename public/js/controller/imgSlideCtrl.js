@@ -1,5 +1,4 @@
-﻿/// <reference path="../module/Check.js" />
-define(['LazyRegister'], function (LazyRegister) {
+﻿define(['LazyRegister'], function (LazyRegister) {
     //컨트롤러 선언
     LazyRegister.controller('imgSlideCtrl', ['$scope', '$element',
       function ($scope, $element) {
@@ -7,7 +6,7 @@ define(['LazyRegister'], function (LazyRegister) {
             , $postListController = $element.find('.img-slide-controller')
             , $postListScrollIndex = 1
             , slidingSpeed = 300;
-          
+          console.log($scope.testt);
           var $postListUpButton = $postListController.find('.up button')
             , $postListDownButton = $postListController.find('.down button')
             , $postListExpandButton = $postListController.find('.expand button');
