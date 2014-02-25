@@ -50,7 +50,40 @@ requirejs.config({
     }
 });
 
+requirejs(['D'], function (D) {
+    var DATA = D();
+    DATA.set('test', 1);
+    console.log(DATA.get('test'));
+    DATA.set({
+        'firstName': '박',
+        'name': function (firstName, name) {
+            if (name === undefined) {
+                return undefined;
+            }
+            return firstName + name;
+        }
+    })
+    console.log(DATA.get('name'));
+    DATA.set('name', '철현');
+    //DATA.apply();
+    console.log('get 이전')
+    console.log(DATA.get('name'));
+    DATA.set('firstName', '홍');
+    
+    console.log(DATA.get('name'));
+    DATA.set('name', '훙힝');
+    DATA.set('firstName', '홍');
+    DATA.apply();
+    DATA.set('firstName', '홍');
+    DATA.apply();
+    DATA.set('firstName', '홍');
+    console.log(DATA.get('name'));
+    console.log(DATA.get('name'));
+    console.log(DATA.get('name'));
+    console.log(DATA.get('name'));
+})
 
+/*
 //requireJS를 활용하여 모듈 로드
 requirejs(['LazyAngular', 'require', 'js/routes', 'bootstrap', 'css!style/fonts'],
   function (LazyAngular, require) {
@@ -61,7 +94,7 @@ requirejs(['LazyAngular', 'require', 'js/routes', 'bootstrap', 'css!style/fonts'
           directives: [
               'lazyInclude', 'lazyView',
               'customSelect', 'customSelectView', 'customOption', 'customOptionWrapper',
-              'customRadio', 'windowLeaveCheck'],
+              'customRadio', 'windowLeaveCheck','slideBox'],
           filters: []
       });
       LazyAngular.setRootInfo({
@@ -71,4 +104,4 @@ requirejs(['LazyAngular', 'require', 'js/routes', 'bootstrap', 'css!style/fonts'
       })
 
       LazyAngular.bootstrap(document, ['Memoria']);
-  });
+  });*/

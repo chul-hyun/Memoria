@@ -1,10 +1,10 @@
 ﻿<section ng-controller="musicRoomCtrl" class="music-room">
     <section class="img-slide-box" ng-controller="imgSlideCtrl">
-        <nav class="img-box">
+        <slide-box id="test">
             <custom-radio ng-repeat="post in posts track by $index" class="img-wrap" change-radio="changePost" ng-checked="{{$index == currentPostIndex}}" value="{{$index}}">
                 <img ng-src="{{post.cover}}" class="img cover" />
             </custom-radio>
-        </nav>
+        </slide-box>
         <nav class="img-slide-controller">
             <div class="btn-wrap up">
                 <button class="btn glyphicon glyphicon-chevron-up" id="up-button"></button>

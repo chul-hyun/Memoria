@@ -1,10 +1,5 @@
 'use strict';
-/**
-  * 라디오 버튼 구현 
-  *
-  * @author: memoria
-  * @see: LazyRegister
-  */
+
 define(['LazyRegister', 'LazyAngular', 'DeferRequire', 'Loop']
   , function (LazyRegister, LazyAngular, DeferRequire, Loop) {
       LazyRegister.directive('lazyInclude', ['$compile', function ($compile) {
