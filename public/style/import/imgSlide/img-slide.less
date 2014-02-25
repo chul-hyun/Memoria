@@ -1,0 +1,44 @@
+﻿@import 'global';
+
+.img-slide(@imgSize, @padding) {
+    .img-slide-box {
+        padding: 0;
+        height: @imgSize + @padding * 2;
+        overflow-y: hidden;
+
+        .img-wrap {
+            .img {
+                .square(@imgSize);
+                display:block;
+              margin: @padding auto;
+            }
+        }
+        
+        .img-slide-controller {
+            position: absolute;
+            margin: @padding;
+            height: @imgSize;
+            left: 0;
+            right: 0;
+
+            .btn-wrap {
+                display: inline-block;
+                position: absolute;
+                right: 0px;
+            }
+
+            .up {
+                top: 0px;
+            }
+
+            .expand {
+                line-height: @imgSize;
+                height: 0px;
+            }
+
+            .down {
+                bottom: 0px;
+            }
+        }
+    }
+}

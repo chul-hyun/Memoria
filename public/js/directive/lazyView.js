@@ -33,7 +33,7 @@ define(['LazyRegister', 'LazyAngular', 'DeferRequire', 'Loop', 'Check']
 
                       info.html = ''; //불러온 html값
                       info.dom = undefined; // 컴파일이 끝난 입력될 Dom
-                      info.path = next.$$route.path || '';
+                      info.path = (next.$$route && !!next.$$route.path)? next.$$route.path : '';
                       info.params = next.params;
 
                       //로드전 실행되는 함수. path값등을 변경해줄수 있다.

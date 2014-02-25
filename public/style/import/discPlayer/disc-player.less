@@ -1,0 +1,61 @@
+﻿@import 'global';
+
+.disc-player(@screenSize) {
+    @discSize: @screenSize * 9/10;
+    @discHoleSize: @screenSize * 1/6;
+    @discBorderSize: 10px;
+    @discLineSize: @discHoleSize + @discBorderSize * 3;
+    @discMoveSize: @screenSize * 1/2;
+    @discColor: @gray-dark;
+    @playerSize: @discMoveSize + @discSize;
+    
+
+    .player{
+        display: block;
+        width: @playerSize;
+    }
+
+    .player {
+        .disc, screen {
+            position: absolute;
+        }
+
+        .disc {
+            .square(@discSize);
+            background-color: @discColor;
+            border-radius: @discSize;
+            margin-top: (@screenSize - @discSize) / 2;
+            margin-bottom: (@screenSize - @discSize) / 2;
+            margin-left: @discMoveSize;
+            margin-right: 0;
+            z-index: -1;
+
+            &:after {
+                content: ' ';
+                .square(@discHoleSize);
+                display: @discColor;
+                position: absolute;
+                background-color: @backgroundColor;
+                border-radius: @discHoleSize;
+                top: @discSize/2 - @discHoleSize/2;
+                left: @discSize/2 - @discHoleSize/2;
+            }
+
+            &:before {
+                content: ' ';
+                .square(@discLineSize);
+                display: block;
+                position: absolute;
+                background-color: transparent;
+                border-radius: @discLineSize;
+                top: @discSize/2 - @discLineSize/2;
+                left: @discSize/2 - @discLineSize/2;
+                border: 3px solid @backgroundColor;
+            }
+        }
+
+        .screen {
+            .square(@screenSize);
+        }
+    }
+}
