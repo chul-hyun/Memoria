@@ -1,21 +1,29 @@
 ﻿@import 'global';
-@import 'imgSlide/img-slide';
-@import 'discPlayer/disc-player';
 
-@backgroundColor: cadetblue;
-
+//grid
 .music-room {
+    @backgroundColor: cadetblue;
     .fixedBackground(@backgroundColor);
 
-    .img-slide-box {
+    .post-list-box {
+        .make-row();
 
-        .img-box {
+        .cover-box {
             .make-row();
-            
-            margin-right:50px;
-            margin-left:50px;
+            //xs
+            .make-xs-column-push(6);
+            .make-xs-column(24);
+            //sm
+            .make-sm-column-push(4);
+            .make-sm-column(28);
+            //md
+            .make-md-column-push(2);
+            .make-md-column(32);
+            //lg
+            .make-lg-column-push(3);
+            .make-lg-column(30);
 
-            .img-wrap {
+            .post-list {
                 .make-xs-column(18);
                 .make-sm-column(9);
                 .make-md-column(6);
@@ -24,64 +32,147 @@
         }
     }
 
-    .img-slide(100px, 10px);
-    .img-slide-box {
-        background-color: aquamarine;
+    @listCoverSize: 100px;
+    @listBoxPadding: 10px;
 
-        .img-wrap {
+    .post-list-box {
+        padding: 0;
+        background-color: aquamarine;
+        height: @listCoverSize + @listBoxPadding * 2;
+        overflow-y: hidden;
+
+        .post-list {
             z-index: @blogMainViewZIndex;
 
-            .img {
+            .cover {
+                .square(@listCoverSize);
+                margin: @listBoxPadding auto;
+                display: block;
                 z-index: @blogMainViewZIndex;
                 border: 3px solid white;
             }
         }
 
-        .img-slide-controller {
+        .post-list-controller {
+            position: absolute;
+            margin: @listBoxPadding;
+            height: @listCoverSize;
+            left: 0;
+            right: 0;
+
             .btn-wrap {
+                display: inline-block;
+                position: absolute;
+                right: 0px;
+
                 .btn {
                     background-color: transparent;
                     color: @backgroundColor;
                 }
             }
+
+            .up {
+                top: 0px;
+            }
+
+            .expand {
+                line-height: @listCoverSize;
+                height: 0px;
+            }
+
+            .down {
+                bottom: 0px;
+            }
         }
     }
 
-    .disc-player(550px);
-    @playerPadding: 20px;
-    .player {
-         margin: 0 auto;
-        padding: @playerPadding 0;
-        .screen {
-            border: 3px solid white;
-            background-color: white;
-        }
-    }
-    /*
-    .comment {
-        margin: 0 auto;
-        @paddingSize: 20px;
-        @baseColor: @brand-success;
-        display: block;
-        width: @playerSize;
-        position: absolute;
-        left: 0;
-        right: 0;
-        background-color: saturate(@baseColor,40%);
-        padding: @paddingSize;
-        border: 5px solid @baseColor;
-        border-radius: 5px;
-        line-height: 1.5;
-        .box-shadow(0px 0px 5px #fff);
-        margin-bottom: 50px;
+    .playarea {
+        @screenSize: 550px;
+        @discSize: @screenSize * 9/10;
+        @discHoleSize: @screenSize * 1/6;
+        @discBorderSize: 10px;
+        @discLineSize: @discHoleSize + @discBorderSize * 3;
+        @discMoveSize: @screenSize * 1/2;
+        @discColor: @gray-dark;
+        @playerSize: @discMoveSize + @discSize;
+        @playerPadding: 20px;
 
-        .time {
+        .player, .comment {
+            display: block;
+            margin: 0 auto;
+            width: @playerSize;
+        }
+
+        .player {
+            padding: @playerPadding 0;
+
+            .disc, screen {
+                position: absolute;
+            }
+
+            .disc {
+                .square(@discSize);
+                background-color: @discColor;
+                border-radius: @discSize;
+                margin-top: (@screenSize - @discSize) / 2;
+                margin-bottom: (@screenSize - @discSize) / 2;
+                margin-left: @discMoveSize;
+                margin-right: 0;
+                z-index: -1;
+
+                &:after {
+                    content: ' ';
+                    .square(@discHoleSize);
+                    display: @discColor;
+                    position: absolute;
+                    background-color: @backgroundColor;
+                    border-radius: @discHoleSize;
+                    top: @discSize/2 - @discHoleSize/2;
+                    left: @discSize/2 - @discHoleSize/2;
+                }
+
+                &:before {
+                    content: ' ';
+                    .square(@discLineSize);
+                    display: block;
+                    position: absolute;
+                    background-color: transparent;
+                    border-radius: @discLineSize;
+                    top: @discSize/2 - @discLineSize/2;
+                    left: @discSize/2 - @discLineSize/2;
+                    border: 3px solid @backgroundColor;
+                }
+            }
+
+            .screen {
+                .square(@screenSize);
+                border: 3px solid white;
+                background-color: white;
+            }
+        }
+
+        .comment {
+            @paddingSize: 20px;
+            @baseColor: @brand-success;
             position: absolute;
-            top: 0;
             left: 0;
             right: 0;
-            text-align: right;
+            background-color: saturate(@baseColor,40%);
             padding: @paddingSize;
+            border: 5px solid @baseColor;
+            border-radius: 5px;
+            line-height: 1.5;
+            .box-shadow(0px 0px 5px #fff);
+            margin-bottom: 50px;
+
+            .time {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                text-align: right;
+                padding: @paddingSize;
+            }
         }
-    }*/
+    }
 }
