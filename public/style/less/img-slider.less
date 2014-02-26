@@ -1,0 +1,90 @@
+﻿@import (reference) '../less/bootstrap.less';
+
+//grid
+.img-slider {
+    .img-box {
+        .make-row();
+
+        .img-wrap {
+            .make-xs-column(18);
+            .make-sm-column(9);
+            .make-md-column(6);
+            .make-lg-column(3);
+        }
+    }
+}
+
+
+
+.img-slider {
+    @listCoverSize: 100px;
+    @listBoxPadding: 10px;
+    @buttonColoer: cadetblue;
+    @padding: 50px;
+
+    padding: 0 @padding;
+    background-color: aquamarine;
+    height: @listCoverSize + @listBoxPadding * 2;
+    overflow-y: hidden;
+
+    .img-wrap {
+        z-index: @blogMainViewZIndex;
+
+        img {
+            .square(@listCoverSize);
+            margin: @listBoxPadding auto;
+            display: block;
+            z-index: @blogMainViewZIndex;
+            border: 3px solid white;
+        }
+    }
+
+
+
+    .img-slider-controller {
+        position: absolute;
+        margin: @listBoxPadding;
+        height: @listCoverSize;
+        left: 0;
+        right: 0;
+
+        .btn-wrap {
+            display: inline-block;
+            position: absolute;
+            right: 0px;
+
+            .btn {
+                background-color: transparent;
+                color: @buttonColoer;
+            }
+        }
+
+        .up {
+            top: 0px;
+        }
+
+        .expand {
+            line-height: @listCoverSize;
+            height: 0px;
+        }
+
+        .down {
+            bottom: 0px;
+        }
+
+        &[window-leaving] {
+            position: fixed;
+            top:0;
+        }
+    }
+}
+.expand-slider {
+    height: auto;
+
+    &[window-leaving] {
+        .img-slider-controller {
+            position: fixed;
+            top:0;
+        }
+    }
+}

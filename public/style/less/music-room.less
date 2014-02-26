@@ -1,90 +1,9 @@
-﻿@import 'global';
+﻿@import (reference) '../less/bootstrap.less';
 
 //grid
 .music-room {
     @backgroundColor: cadetblue;
     .fixedBackground(@backgroundColor);
-
-    .post-list-box {
-        .make-row();
-
-        .cover-box {
-            .make-row();
-            //xs
-            .make-xs-column-push(6);
-            .make-xs-column(24);
-            //sm
-            .make-sm-column-push(4);
-            .make-sm-column(28);
-            //md
-            .make-md-column-push(2);
-            .make-md-column(32);
-            //lg
-            .make-lg-column-push(3);
-            .make-lg-column(30);
-
-            .post-list {
-                .make-xs-column(18);
-                .make-sm-column(9);
-                .make-md-column(6);
-                .make-lg-column(3);
-            }
-        }
-    }
-
-    @listCoverSize: 100px;
-    @listBoxPadding: 10px;
-
-    .post-list-box {
-        padding: 0;
-        background-color: aquamarine;
-        height: @listCoverSize + @listBoxPadding * 2;
-        overflow-y: hidden;
-
-        .post-list {
-            z-index: @blogMainViewZIndex;
-
-            .cover {
-                .square(@listCoverSize);
-                margin: @listBoxPadding auto;
-                display: block;
-                z-index: @blogMainViewZIndex;
-                border: 3px solid white;
-            }
-        }
-
-        .post-list-controller {
-            position: absolute;
-            margin: @listBoxPadding;
-            height: @listCoverSize;
-            left: 0;
-            right: 0;
-
-            .btn-wrap {
-                display: inline-block;
-                position: absolute;
-                right: 0px;
-
-                .btn {
-                    background-color: transparent;
-                    color: @backgroundColor;
-                }
-            }
-
-            .up {
-                top: 0px;
-            }
-
-            .expand {
-                line-height: @listCoverSize;
-                height: 0px;
-            }
-
-            .down {
-                bottom: 0px;
-            }
-        }
-    }
 
     .playarea {
         @screenSize: 550px;

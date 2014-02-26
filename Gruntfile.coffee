@@ -54,7 +54,7 @@ module.exports = (grunt) ->
         options:
           paths: ["#{publicSrc.style}/import"]
           compress: false
-          cleancss: true
+          cleancss: false
           ieCompat: false
           debug: true
           syncImport: false

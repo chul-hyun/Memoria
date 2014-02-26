@@ -1,31 +1,16 @@
-@import 'global';
+@import (reference) '../less/bootstrap.less';
 
 .blog {
     @categoryHeight: 22px;
 
-    .window-leave {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-
-        & + *:before {
-            content: '\n';
-            display: block;
-            margin: 0px;
-            padding: 0px;
-            height:0px;
-            margin-bottom: @categoryHeight;
-            
-        }
-    }
-
     //grid
     .category-box {
         .make-row();
+
         .category {
             .make-xs-column(9);
             .make-sm-column(6);
+
             &:first-of-type {
                 .make-xs-column-offset(0);
                 .make-sm-column-offset(6);
@@ -38,6 +23,7 @@
         height: @categoryHeight;
         z-index: @blogCategoryIndex;
         background-color: white;
+
         .category {
             //font
             color: @gray-light;
@@ -50,7 +36,7 @@
             //structure
             border-bottom: 2px solid @gray-lighter;
             z-index: @blogCategoryIndex;
-            
+
             &:hover {
                 color: @brand-success;
                 border-bottom-color: lighten(@brand-success,30%);
@@ -60,6 +46,22 @@
                 color: @brand-success;
                 border-bottom-color: @brand-success;
                 font-weight: bolder;
+            }
+        }
+
+        &[window-leaved], &[window-leaving] {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            & + *:before {
+                content: '\n';
+                display: block;
+                margin: 0px;
+                padding: 0px;
+                height: 0px;
+                margin-bottom: @categoryHeight;
             }
         }
     }

@@ -8,13 +8,16 @@ define(['LazyRegister', 'jquery'], function (LazyRegister) {
             scope: {},
             link: function (scope, element, attrs) {
 
-                $(window).scroll(function () {
+                $(window).on('scroll resize',function () {
 
-                    element.removeClass('window-leave');
+                    element.removeAttr('window-leaved');
+                    element.removeAttr('window-leaving');
                     var preTop = element.offset().top - parseFloat(element.css('marginTop'))
-                      , preOuterHeight = element.outerHeight();
-                    if ($(window).scrollTop() >= preTop) {
-                        element.addClass('window-leave');
+                      , preBottom = element.outerHeight() + preTop;
+                    if ($(window).scrollTop() >= preBottom) {
+                        element.attr('window-leaved', true);
+                    }else if ($(window).scrollTop() >= preTop) {
+                        element.attr('window-leaving', true);
                     }
                 })
             }

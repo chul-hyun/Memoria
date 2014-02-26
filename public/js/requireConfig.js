@@ -52,12 +52,13 @@ requirejs.config({
 
 
 //requireJS를 활용하여 모듈 로드
+
 requirejs(['LazyAngular', 'require', 'js/routes', 'bootstrap', 'css!style/fonts'],
   function (LazyAngular, require) {
       LazyAngular.pushPathInfo({
           controllers: [
               'CommonCtrl', 'logoCtrl',
-              'blogCtrl', 'musicRoomCtrl'],
+              'blogCtrl', 'musicRoomCtrl', 'imgSliderCtrl'],
           directives: [
               'lazyInclude', 'lazyView',
               'customSelect', 'customSelectView', 'customOption', 'customOptionWrapper',

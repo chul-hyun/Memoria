@@ -1,11 +1,6 @@
 ﻿<section ng-controller="musicRoomCtrl" class="music-room">
-    <section class="post-list-box" id="post-list-box">
-        <nav class="cover-box">
-            <custom-radio ng-repeat="post in posts track by $index" class="post-list" change-radio="changePost" ng-checked="{{$index == currentPostIndex}}" value="{{$index}}">
-                <img ng-src="{{post.cover}}" class="cover" />
-            </custom-radio>
-        </nav>
-        <nav class="post-list-controller" id="post-list-controller">
+    <section class="img-slider" ng-controller="imgSliderCtrl" window-leave-check>
+        <nav class="img-slider-controller" id="img-slider-controller">
             <div class="btn-wrap up">
                 <button class="btn glyphicon glyphicon-chevron-up" id="up-button"></button>
             </div>
@@ -15,6 +10,11 @@
             <div class="btn-wrap down">
                 <button class="btn glyphicon glyphicon-chevron-down" id="down-button"></button>
             </div>
+        </nav>
+        <nav class="img-box">
+            <custom-radio ng-repeat="post in posts track by $index" class="img-wrap" change-radio="changePost" ng-checked="{{$index == currentPostIndex}}" value="{{$index}}">
+                <img ng-src="{{post.cover}}" />
+            </custom-radio>
         </nav>
     </section>
     <article class="playarea hidden-xs">
