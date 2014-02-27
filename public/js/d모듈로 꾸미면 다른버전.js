@@ -32,7 +32,7 @@
                 } else if (this === $slideExpandButton[0]) {
                     expand = !expand;
                 }
-            }) // 즉. 함수를 반환한다. d(~~~~~)는..ㅇㅇ
+            },this) // 즉. 함수를 반환한다. d(~~~~~)는..ㅇㅇ
         );
 
         /*
@@ -70,7 +70,6 @@
                 (scrollIndex > ScrollLastIndex) ? ScrollLastIndex :
                 scrollIndex;
             slide();
-            return arguments;
 
             function slide() {
                 $element.stop(true, true).animate({ scrollTop: moveHeight * scrollIndex }, slidingSpeed);
@@ -78,19 +77,16 @@
         }
         function applyMoveHeight(moveHeight) {
             moveHeight = $element.height();
-            return arguments;
         }
         function applyScrollLastIndex(ScrollLastIndex, moveHeight) {
             if (moveHeight === 0) {
                 ScrollLastIndex = 0;
             }
             ScrollLastIndex = ($element.prop("scrollHeight") / moveHeight) - 1;
-            return arguments;
         }
         function applyExpand(expand, scrollIndex) {
             (expand) ? $element.addClass('expand-slider') : $element.removeClass('expand-slider');
             scrollIndex = 0;
-            return arguments;
         }
 
 
