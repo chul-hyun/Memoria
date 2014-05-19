@@ -23,10 +23,11 @@
 ### 사용하려는 기술
 * Server side
    * Nodejs(서버사이드 자바스크립트 기술) [공식 사이트](http://www.nodejs.org)
-      * Grunt(The JavaScript Task Runner) [공식 사이트](http://gruntjs.com)
-      * livereload(소스 변경시마다 페이지가 reload 되는 tesk 모듈)
-      * connect(서버역할을 해주는 모듈)
-      * ...(etc...)
+       * connect : express는 너무 추상적이며 크고 그냥 nodejs는 복잡하다. 가장 기본에 충실한 connect 모듈 사용.
+
+* Debugging tool
+  * Grunt(The JavaScript Task Runner) [공식 사이트](http://gruntjs.com)
+
 * Client side
    * HTML5
    * Javascript
@@ -40,10 +41,13 @@
    
 * DetaBase side
    * MongoDB(NoSQL DB (JSON으로 저장되는 DB)) [공식 사이트](http://www.mongodb.org)
-* Version Management System
-   * GIT (github)(버전관리 시스템) [github 공식사이트](http://github.com)
-* Libaray Management System
+
+* Version Management tool
+   * GIT (github) [github 공식사이트](http://github.com)
+
+* Libaray Management tool
    * bower [공식사이트](http://bower.io/)
+
 * IDE
    * Visual Stdio
 
@@ -67,7 +71,7 @@
 ***
  
 # 기간
-5/19 - 7/2
+5/19 - 7/8
 
 ## 기본틀 결정 기간
 5/19 - 6/20
@@ -77,31 +81,38 @@
 * 기본 풀더, 기본사용 라이브러리 파일 등 생성.
 
 ### 구조 결정 기간
-* 5/19 - 5/20 : Frount End Side 구조 결정 및 테스트(5/22), 기본 풀더 및 라이브러리 파일 생성
+* 5/19 - 5/20 : Frount End Side 구조 결정 및 테스트(5/22), 기본 풀더 및 라이브러리 파일 생성.
+* 5/21 - 5/23 : 모든 기능 및 구조를 사용하는 테스트 파일 작성.
+
+* - 5/27 VHDL 시험, DB과제
 
 ### 사이트 세부 디자인 및 기능 결정 기간
-* 5/21 - 5/23 : 사이트 디자인, 기능등 사이트맵 세부 결정.
-* - 5/27 VHDL 시험, DB과제
-* 5/28 - 5/30 : 기본틀 결정 보완기간
+* 5/28 - 5/30 : 사이트 디자인, 기능등 사이트맵 세부 결정.
 
 * - 6/20 : 기말고사 완벽히 준비.
 
+* 6/21 - 6/22 : 기본틀 전체적인 보완기간
+
 ## 파일 관계도 결정 기간
-6/21 - 7/2
+6/23 - 7/6
 
 ### 기능 분할 결정 기간
-* 6/21 : directive, page, page-part, 그리고 서버쪽도 기능적으로 분할 및 파일 연결 구조 결정.
+* 6/23 : directive, page, page-part, 그리고 서버쪽도 기능적으로 분할 및 파일 연결 구조 결정.
 
 ### 제작파일 결정기간
-* 6/22 : 기능별, 페이지별등으로 제작 파일 및 관계 결정.
+* 6/24 : 기능별, 페이지별등으로 제작 파일 및 관계 결정.
+
+### DB구조 결정 기간
+* 6/25
 
 ## 제작 전 마지막 보완기간
-* 6/23 - 6/25 : 지금까지 결정된 사항들 모두 검토 및 보완.
+* 6/26 - 6/28 : 지금까지 결정된 사항들 모두 검토 및 보완.
 
 ## 제작기간
-* 6/26 - 6/28 : 클라이언트 파일 제작.
-* 6/29 - 7/1 : 서버 파일 제작.
+* 6/29 - 7/1 : 클라이언트 파일 제작.
+* 7/1 - 7/3 : DB 프로그래밍.
+* 7/4 - 7/6 : 서버 파일 제작.
 
 ## 마무리 기간
-* 7/2 : 인터넷으로 홈페이지 연결 및 도메인 연결.
-* 7/2 - : 알고리즘, 주석 , 기능 등 업데이트
+* 7/8 : 인터넷으로 홈페이지 연결 및 도메인 연결.
+* 7/8 - : 알고리즘, 주석 , 기능 등 업데이트
