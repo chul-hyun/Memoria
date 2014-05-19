@@ -24,7 +24,6 @@
 * Server side
    * Nodejs(서버사이드 자바스크립트 기술) [공식 사이트](http://www.nodejs.org)
       * Grunt(The JavaScript Task Runner) [공식 사이트](http://gruntjs.com)
-      * Bower [공식사이트](http://bower.io/)
       * livereload(소스 변경시마다 페이지가 reload 되는 tesk 모듈)
       * connect(서버역할을 해주는 모듈)
       * ...(etc...)
@@ -33,16 +32,18 @@
    * Javascript
       * jQuery [공식 사이트](http://jquery.com)
       * requireJS(javascript 모듈화) [공식 사이트](http://requirejs.org)
-      * puzzleJS [git페이지](https://github.com/qkrcjfgus33/Puzzle.js)
-      * Micro-Templating
+      * puzzleJS [공식 사이트](http://qkrcjfgus33.github.io/Puzzle.js/)
+      * Micro-Templating [공식사이트](http://ejohn.org/blog/javascript-micro-templating/)
    * CSS3
       * LESS(동적 css 및 mixin등의 문법 제공) [공식 사이트](http://lesscss.org)
       * Bootstrap(반응형 디자인에 도움주는 라이브러리. grid system등을 지원한다.) [공식 사이트](http://getbootstrap.com)
    
 * DetaBase side
    * MongoDB(NoSQL DB (JSON으로 저장되는 DB)) [공식 사이트](http://www.mongodb.org)
-* Version control
+* Version Management System
    * GIT (github)(버전관리 시스템) [github 공식사이트](http://github.com)
+* Libaray Management System
+   * bower [공식사이트](http://bower.io/)
 * IDE
    * Visual Stdio
 
