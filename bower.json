@@ -16,11 +16,14 @@
   ],
   "license": "MIT",
   "dependencies": {
-	"jquery": "~2.1.1",
+    "jquery": "~2.1.1",
     "puzzle": "*",
     "bootstrap": "~3.1.1",
     "requirejs": "~2.1.11",
     "require-css": "~0.1.2",
     "requirejs-text": "~2.0.12"
+  },
+  "devDependencies": {
+    "qunit": "~1.14.0"
   }
 }
