@@ -1,2 +1,3 @@
-client/libary
+bower_components/
 node_modules/
+temp/

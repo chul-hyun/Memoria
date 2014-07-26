@@ -1,29 +1,24 @@
 {
   "name": "Memoria",
   "version": "0.0.0",
-  "description": "Memoria site",
-  "main": "client/view/page/index.html",
-  "keywords": [
-    "memoria",
-    "develop",
-    "computer",
-    "blog",
-    "design",
-    "application"
-  ],
+  "homepage": "https://github.com/qkrcjfgus33/Memoria",
   "authors": [
-    "람츠<qkrcjfgus3@gmail.com>"
+    "람츠 <82g74nx0bm69@naver.com>"
   ],
   "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
+    "bootstrap": "~3.2.0",
+    "requirejs": "~2.1.14",
     "jquery": "~2.1.1",
-    "puzzle": "*",
-    "bootstrap": "~3.1.1",
-    "requirejs": "~2.1.11",
-    "require-css": "~0.1.2",
-    "requirejs-text": "~2.0.12"
-  },
-  "devDependencies": {
-    "qunit": "~1.14.0"
+    "requirejs-text": "~2.0.12",
+    "require-css": "~0.1.5",
+    "watch": "*"
   }
 }
