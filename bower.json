@@ -19,6 +19,6 @@
     "jquery": "~2.1.1",
     "requirejs-text": "~2.0.12",
     "require-css": "~0.1.5",
-    "watch": "*"
+    "binder": "*"
   }
 }

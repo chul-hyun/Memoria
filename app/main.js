@@ -12,7 +12,7 @@ requirejs.config({
     'text'      : '../components/requirejs-text/text',
     'jquery'    : '../components/jquery/dist/jquery.min',
     'bootstrap' : '../components/bootstrap/dist/js/bootstrap.min',
-    'watch'     : '../components/watch/src/watch.min'
+    'binder'    : '../components/binder/build/binder.min'
   },
   shim: {
     'bootstrap': {
@@ -23,12 +23,8 @@ requirejs.config({
 });
 
 //requireJS를 활용하여 모듈 로드
-require(['jquery', 'watch', 'tmpl', 'bootstrap'],
-  function ($, WatchJS, tmpl) {
+require(['jquery', 'binder', 'tmpl', 'bootstrap'],
+  function ($, binderJS, tmpl) {
     require(['css!../view/main'])
-
-    var watch = WatchJS.watch;
-    var unwatch = WatchJS.unwatch;
-    var callWatchers = WatchJS.callWatchers;
 
   });
