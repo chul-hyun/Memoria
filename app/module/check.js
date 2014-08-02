@@ -1,4 +1,4 @@
-﻿define(function(){
+﻿define([],function(){
   function nulled(thing) {
     return thing === null;
   }
@@ -8,7 +8,11 @@
   }
 
   function object(thing) {
-    return typeof thing === 'object' && !nulled(thing) && !array(thing) && !date(thing) && !dom(thing)
+    return typeof thing === 'object' && !nulled(thing) && !date(thing)
+  }
+
+  function planObject(thing) {
+    return object(thing) && !array(thing) && !dom(thing)
   }
 
   function array(thing) {
@@ -16,6 +20,10 @@
       return Array.isArray(thing)
     }
     return Object.prototype.toString.call(thing) === '[object Array]'
+  }
+
+  function likeArray(thing) {
+    return object(thing) && !array(thing) && intNumber(thing.length)
   }
 
   function arguments(thing) {
@@ -38,52 +46,52 @@
     return unemptyString(thing) && /^git\+(ssh|https?):\/\/.+/.test(thing)
   }
 
-  function email(thing, msg) {
+  function email(thing) {
     return unemptyString(thing) && /\S+@\S+/.test(thing)
   }
 
-  function unemptyString(thing, msg) {
+  function unemptyString(thing) {
     return string(thing) && thing !== ''
   }
 
-  function string(thing, msg) {
+  function string(thing) {
     return typeof thing === 'string'
   }
 
-  function oddNumber(thing, msg) {
+  function oddNumber(thing) {
     return number(thing) && (thing % 2 === 1 || thing % 2 === -1)
   }
 
-  function evenNumber(thing, msg) {
+  function evenNumber(thing) {
     return number(thing) && thing % 2 === 0
   }
 
-  function intNumber(thing, msg) {
+  function intNumber(thing) {
     return number(thing) && thing % 1 === 0
   }
 
-  function floatNumber(thing, msg) {
+  function floatNumber(thing) {
     return number(thing) && thing % 1 !== 0
   }
 
-  function positiveNumber(thing, msg) {
+  function positiveNumber(thing) {
     return number(thing) && thing > 0
   }
 
-  function negativeNumber(thing, msg) {
+  function negativeNumber(thing) {
     return number(thing) && thing < 0
   }
 
-  function number(thing, msg) {
+  function number(thing) {
     return typeof thing === 'number' &&
       isNaN(thing) === false &&
       thing !== Number.POSITIVE_INFINITY &&
       thing !== Number.NEGATIVE_INFINITY
   }
 
-  function dom(thing, msg) {
-    return typeof Node === "object" ? thing instanceof Node :
-      thing && typeof thing === "object" && typeof thing.nodeType === "number" && typeof thing.nodeName === "string"
+  function dom(thing) {
+    return object(Node) ? thing instanceof Node :
+    thing && object(thing) && intNumber(thing.nodeType) && string(thing.nodeName)
   }
 
   var check = {
@@ -92,6 +100,8 @@
     'obj': object,
     'array': array,
     'arr': array,
+    'likeArray': likeArray,
+    'likeArr': likeArray,
     'arguments': arguments,
     'arg': arguments,
     'date': date,
@@ -129,19 +139,6 @@
       })(check[methodName])
     }
   })(check)
-
-  function initObj(targetObj, defaultObj) {
-    if (!(object(targetObj) || array(targetObj)) && !(object(defaultObj) || array(defaultObj))) {
-      throw TypeError()
-    }
-
-    for (var prop in defaultObj) {
-      initObj(targetObj[prop], defaultObj[prop])
-      targetObj[prop] = (targetObj[prop] === undefined) ? defaultObj[prop] : targetObj[prop]
-    }
-  }
-
-  check.initObj = initObj
 
   return check
 })

@@ -1,8 +1,8 @@
 ﻿define(['check'], function(check){
-  function loop(o, callback) {
-    if (check.array(o)) {
+  function loop(o, callback, that) {
+    if (check.array(o) || check.likeArray(o)) {
       for (var i = 0, len = o.length ; i < len ; i++) {
-        if (callback.apply(o, o[i], i) === false) {
+        if (callback.call(that, o[i], i) === false) {
           return false
         }
       }
@@ -10,14 +10,15 @@
     else if (check.object(o)) {
       for (var propName in o) {
         if (o.hasOwnProperty(propName)) {
-          if (callback.apply(o, o[propName], propName) === false) {
+          if (callback.call(that, o[propName], propName) === false) {
             return false
           }
         }
       }
     }
-    else {
-      throw TypeError()
-    }
+
+    return true
   }
+
+  return loop
 })

@@ -68,13 +68,20 @@
         src: '**',
         dest: path.resolve(temp, 'components'),
         filter: 'isFile'
+      },
+      js: {
+        expand: true,
+        cwd: app,
+        src: '**/*.js',
+        dest: temp,
+        filter: 'isFile'
       }
     },
     uglify: {
       js: {
         files: [{
           expand: true,
-          cwd: app,
+          cwd: temp,
           src: '**/*.js',
           dest: temp,
           filter: 'isFile'
@@ -87,19 +94,19 @@
       },
       js: {
         files: [path.resolve(app, '**/*.js'), '!' + path.resolve(app, 'components/**')],
-        tasks: ['clean:js', 'uglify']
+        tasks: ['newer:copy:js']
       },
       css: {
         files: [path.resolve(app, '**/*.less'), '!' + path.resolve(app, 'components/**')],
-        tasks: ['clean:css', 'less:main']
+        tasks: ['newer:less:main']
       },
       html: {
         files: [path.resolve(app, 'view/**/*.html')],
-        tasks: ['clean:html', 'copy:html']
+        tasks: ['newer:copy:html']
       },
       components: {
         files: [path.resolve(app, 'components/**')],
-        tasks: ['clean:components', 'less:components', 'copy:components']
+        tasks: ['newer:less:components', 'newer:copy:components']
       }
     },
     clean: {
@@ -116,14 +123,10 @@
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-express');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-open');
+  require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('build', ['clean', 'copy', 'less', 'uglify']);
-  grunt.registerTask('server', ['build', 'express', 'watch']);
+  grunt.registerTask('build', ['clean', 'copy', 'less']);
+  
+  grunt.registerTask('dev', ['build', 'express', 'watch']);
+  grunt.registerTask('server', ['build', 'uglify', 'express']);
 };
